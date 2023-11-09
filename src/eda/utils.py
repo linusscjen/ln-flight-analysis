@@ -1,5 +1,6 @@
 import pandas as pd
 from plotnine import *
+import pickle
 
 
 def find_percent(data: pd.DataFrame, group_col: str, target_col: str):
@@ -38,3 +39,25 @@ def plot_cdf(data: pd.DataFrame, num_col: str, group_col: str, title: str = ""):
         + labs(title=title, y="Cumulative Distribution Function")
     )
     print(p)
+
+
+# Pickle functions
+def save_pickle(object, path_name: str):
+    """Function to store an object as a pickle
+
+    Args:
+        object: object meant to be stored
+        path_name (str): string to name the pickle, including the path to the storage
+    """
+    with open(path_name, "wb") as pickle_out:
+        pickle.dump(object, pickle_out)
+
+
+def load_pickle(path_name: str):
+    """Load pickle given filepath to pickle object
+
+    Args:
+        path_name (str): path to pickle
+    """
+    with open(path_name, "rb") as pickle_in:
+        return pickle.load(pickle_in)
