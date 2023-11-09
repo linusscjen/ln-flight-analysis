@@ -49,8 +49,8 @@ def impute_cols(x_train: pd.DataFrame, x_test: pd.DataFrame, cols: list, imputat
     train = x_train.copy()
     test = x_test.copy()
 
-    train[cols].fillna(imputation, inplace=True)
-    test[cols].fillna(imputation, inplace=True)
+    train[cols] = train[cols].fillna(imputation)
+    test[cols] = test[cols].fillna(imputation)
 
     return train, test
 
